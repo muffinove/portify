@@ -1,0 +1,354 @@
+/* --------- Reset-ish --------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #23222a;
+  overflow-x: hidden;
+}
+
+/* --------- Background --------- */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg-top {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(800px 500px at 30% 20%, rgba(168, 85, 247, 0.20), transparent 60%),
+    radial-gradient(900px 600px at 80% 10%, rgba(236, 72, 153, 0.16), transparent 60%),
+    linear-gradient(180deg, #faf7ff 0%, #f6f0ff 40%, #f3edff 100%);
+}
+
+.bg-bottom {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 36%;
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.18) 0%, rgba(124, 58, 237, 0.10) 55%, rgba(124, 58, 237, 0.05) 100%);
+  border-top: 1px solid rgba(124, 58, 237, 0.18);
+}
+
+/* Cute stickers */
+.sticker {
+  position: absolute;
+  user-select: none;
+  opacity: 0.9;
+}
+
+.sticker.star {
+  top: 60px;
+  left: 80px;
+  font-size: 42px;
+  color: rgba(124, 58, 237, 0.55);
+  text-shadow: 0 10px 22px rgba(124, 58, 237, 0.20);
+  transform: rotate(-10deg);
+}
+
+.sticker.blob {
+  width: 90px;
+  height: 90px;
+  right: 70px;
+  bottom: 60px;
+  background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.40), rgba(124, 58, 237, 0.20));
+  border-radius: 55% 45% 60% 40% / 55% 55% 45% 45%;
+  filter: blur(0.2px);
+  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.18);
+}
+
+/* --------- Layout --------- */
+.wrap {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+/* --------- Window --------- */
+.window {
+  width: min(860px, 100%);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  box-shadow:
+    0 22px 60px rgba(17, 24, 39, 0.18),
+    0 2px 0 rgba(255, 255, 255, 0.6) inset;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.titlebar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  background: linear-gradient(180deg, rgba(36, 36, 40, 0.92), rgba(28, 28, 33, 0.92));
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.traffic {
+  display: flex;
+  gap: 7px;
+}
+.traffic span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+}
+.title {
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-transform: lowercase;
+}
+
+.content {
+  padding: 70px 40px 40px;
+  text-align: center;
+}
+
+.headline {
+  margin: 0 0 14px;
+  font-weight: 800;
+  font-size: clamp(34px, 5vw, 64px);
+  letter-spacing: -1px;
+}
+.accent {
+  color: #7c3aed; /* purple */
+}
+
+.subtitle {
+  margin: 0 0 60px;
+  font-size: 18px;
+  color: rgba(35, 34, 42, 0.72);
+}
+
+/* --------- Dock buttons --------- */
+.dock {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 0 10px;
+  flex-wrap: wrap;
+}
+
+.dock-item {
+  width: 120px;
+  padding: 14px 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  background: rgba(255,255,255,0.75);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.12);
+}
+
+.dock-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(124, 58, 237, 0.16);
+}
+
+.dock-item.active {
+  background: rgba(124, 58, 237, 0.10);
+  border-color: rgba(124, 58, 237, 0.30);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 8px;
+  border-radius: 14px;
+  background: rgba(17, 24, 39, 0.06);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-transform: lowercase;
+  color: rgba(35, 34, 42, 0.78);
+}
+
+/* --------- Panels --------- */
+.panel {
+  margin: 0 auto;
+  width: min(720px, 100%);
+  text-align: left;
+  border-radius: 16px;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.70);
+  box-shadow: 0 18px 46px rgba(17, 24, 39, 0.10);
+  padding: 18px;
+}
+
+.tab { display: none; }
+.tab.show { display: block; }
+
+.bullets {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: rgba(35, 34, 42, 0.80);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 6px 0 10px;
+}
+
+.links a {
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  background: rgba(124, 58, 237, 0.08);
+  color: #4c1d95;
+  font-weight: 600;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.links a:hover {
+  transform: translateY(-1px);
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.card {
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  background: rgba(255,255,255,0.78);
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.card p {
+  margin: 0 0 10px;
+  color: rgba(35, 34, 42, 0.78);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tags span {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.06);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  color: rgba(35, 34, 42, 0.72);
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: rgba(35, 34, 42, 0.55);
+  text-align: center;
+}
+
+.muted { color: rgba(35, 34, 42, 0.62); }
+.small { font-size: 13px; }
+
+/* Responsive tweaks */
+@media (min-width: 720px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --------- Popup Modals --------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.35);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 140ms ease;
+  z-index: 50;
+}
+
+.overlay.show {
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%) scale(0.98);
+  width: min(700px, calc(100% - 28px));
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(124, 58, 237, 0.20);
+  box-shadow: 0 26px 80px rgba(17, 24, 39, 0.22);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 140ms ease, transform 140ms ease;
+  z-index: 60;
+}
+
+.modal.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-titlebar {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: linear-gradient(180deg, rgba(36, 36, 40, 0.92), rgba(28, 28, 33, 0.92));
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.modal-title {
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-transform: lowercase;
+}
+
+.modal-close {
+  font: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 6px 7px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.modal-body {
+  padding: 18px;
+  text-align: left;
+}
+
+/* make cards look nice inside modal too */
+.modal .cards {
+  width: 100%;
+}
+
+.modal .card {
+  background: rgba(255,255,255,0.86);
+}

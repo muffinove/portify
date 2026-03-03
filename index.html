@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>muffin's page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Background decorations -->
+    <div class="bg">
+      <div class="bg-top"></div>
+      <div class="bg-bottom"></div>
+
+      <!-- optional cute icons -->
+      <div class="sticker star" aria-hidden="true">★</div>
+      <div class="sticker blob" aria-hidden="true"></div>
+    </div>
+
+    <!-- Main window -->
+    <main class="wrap">
+      <section class="window" aria-label="Portfolio window">
+        <div class="titlebar">
+          <div class="traffic" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="title">welcome!</div>
+        </div>
+
+        <div class="content">
+          <h1 class="headline">
+            hello i’m <span class="accent">muffin</span>
+          </h1>
+          <p class="subtitle">developer • artist • builder</p>
+
+          <!-- Dock buttons now open popup windows -->
+          <nav class="dock" aria-label="Sections">
+            <button class="dock-item" data-open="aboutModal" type="button">
+              <span class="icon">i</span>
+              <span class="label">about</span>
+            </button>
+
+            <button class="dock-item" data-open="linksModal" type="button">
+              <span class="icon">⛓</span>
+              <span class="label">links</span>
+            </button>
+
+            <button class="dock-item" data-open="workModal" type="button">
+              <span class="icon">▦</span>
+              <span class="label">work</span>
+            </button>
+          </nav>
+
+          <footer class="footer">
+            <span>© <span id="year"></span> Muffin / muffinove @ Discord</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" hidden></div>
+
+    <!-- ABOUT MODAL -->
+    <section
+      class="modal"
+      id="aboutModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="aboutTitle"
+      hidden
+    >
+      <div class="modal-titlebar">
+        <div class="modal-title" id="aboutTitle">about</div>
+        <button class="modal-close" data-close type="button">🗙</button>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          I’m <b>Muffin!</b>
+          <br>Just your local developer who loves Minecraft.
+          I enjoy building things that feel simple and “finished”.
+        </p>
+
+        <ul class="bullets">
+          <li>Focus: Frontend + Backend</li>
+          <li>Currently learning: To make complex discord bots</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LINKS MODAL -->
+    <section
+      class="modal"
+      id="linksModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="linksTitle"
+      hidden
+    >
+      <div class="modal-titlebar">
+        <div class="modal-title" id="linksTitle">links</div>
+        <button class="modal-close" data-close type="button">🗙</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="links">
+          <a href="https://discord.com/users/1387670105546297488" target="_blank" rel="noreferrer">Discord</a>
+          <!-- <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a> -->
+          <!-- <a href="mailto:you@example.com">Email</a> -->
+          <!-- <a href="#" target="_blank" rel="noreferrer">Resume</a> -->
+        </div>
+
+        <!-- <p class="muted small">
+          Tip: replace these with your real URLs (and resume link).
+        </p> -->
+      </div>
+    </section>
+
+    <!-- WORK MODAL -->
+    <section
+      class="modal"
+      id="workModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="workTitle"
+      hidden
+    >
+      <div class="modal-titlebar">
+        <div class="modal-title" id="workTitle">work</div>
+        <button class="modal-close" data-close type="button">🗙</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="cards">
+
+          <article class="card">
+            <h3>Bot Code</h3>
+            <p>Simple discord bot code where when an user types "ping" it replies with "Pong!".</p>
+            <div class="tags">
+              <span>JS</span><span>Node.js</span><span>discord.js</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Portfolio Website</h3>
+            <p>Lightweight portfolio with an aesthetic window UI and popups.</p>
+            <div class="tags">
+              <span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+          </article>
+
+          <!-- <article class="card">
+            <h3>Project Title</h3>
+            <p>Short description of what you built and what problem it solves.</p>
+            <div class="tags">
+              <span>Tag</span><span>Tag</span><span>Tag</span>
+            </div>
+          </article> -->
+
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
